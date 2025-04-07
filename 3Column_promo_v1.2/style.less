@@ -12,20 +12,32 @@ body {
 
 .promo {
     display: flex;
+    flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
+    justify-content:space-evenly;
     gap: 2rem;
     padding: 2rem;
+    box-sizing: border-box;
+    align-items: flex-start;
+    width: 100%;
 
     &--item {
+        display: flexbox;
+        flex-direction: column;
         background: white;
         border-radius: @border-radius;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         padding: 1.5rem;
-        max-width: 300px;
+        margin: 0 auto;
+        width: 30vw;
+        max-width: 350px;
+        height: 90vh;
         flex: 1 1 300px;
         text-align: center;
         transition: transform 0.3s ease;
+        box-sizing: border-box;
+        overflow: hidden;
 
         &:hover {
             transform: translateY(-5px);
@@ -33,15 +45,42 @@ body {
     }
 
     &__icon {
+        display: flexbox;
+        justify-content: center;
         font-size: 2rem;
         margin-bottom: 1rem;
     }
 
-    &__image {
-        width: 100%;
-        height: auto;
+    &__content {
+        width: 90%;
+        height: 40%;
+        display: flex;
+        flex-direction: column;
+        justify-content:flex-end;
+        align-items: center;
+        text-align: center;
+    }
+
+    &__image-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
+        width: 90%;
+        height: 50%;
+        aspect-ratio: 4/3;
+        overflow: hidden;
         border-radius: @border-radius;
         margin-bottom: 1rem;
+        background-color: @bg-light; //incase img fails to load
+    }
+
+    &__image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        justify-content: center;
     }
 
     &__title {
@@ -57,7 +96,7 @@ body {
     }
 
     &__link {
-        display: inline-block;
+        display: flexbox;
         padding: 0.6rem 1.5rem;
         background-color: @primary-color;
         color: white;
@@ -71,7 +110,14 @@ body {
     }
 
     @media (max-width: 600px) {
-        flex-direction: column;
-        align-items: center;
+        .promo {
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .promo--item {
+            max-width: 90%;
+            flex: 1 1 auto;
+        }
     }
 }
