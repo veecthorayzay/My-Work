@@ -1,0 +1,64 @@
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background-color: #f9f9f9;
+  margin: 0;
+  padding: 0;
+}
+.promo {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  padding: 2rem;
+}
+.promo--item {
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+  max-width: 300px;
+  flex: 1 1 300px;
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+.promo--item:hover {
+  transform: translateY(-5px);
+}
+.promo__icon {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+.promo__image {
+  width: 100%;
+  height: auto;
+  border-radius: 16px;
+  margin-bottom: 1rem;
+}
+.promo__title {
+  font-size: 1.5rem;
+  color: #4f46e4;
+  margin-bottom: 0.5rem 0;
+}
+.promo__description {
+  font-size: 1rem;
+  color: #333;
+  margin-bottom: 1rem;
+}
+.promo__link {
+  display: inline-block;
+  padding: 0.6rem 1.5rem;
+  background-color: #4f46e4;
+  color: white;
+  text-decoration: none;
+  border-radius: 16px;
+  transition: background-color 0.3s ease;
+}
+.promo__link:hover {
+  background-color: #2a1fd8;
+}
+@media (max-width: 600px) {
+  .promo {
+    flex-direction: column;
+    align-items: center;
+  }
+}
