@@ -1,6 +1,6 @@
 body {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  background-color: #f9f9f9;
+  background-color: #ebffff;
   margin: 0;
   padding: 0;
 }
@@ -8,7 +8,6 @@ body {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: center;
   justify-content: space-evenly;
   gap: 2rem;
   padding: 2rem;
@@ -17,28 +16,30 @@ body {
   width: 100%;
 }
 .promo--item {
-  display: flexbox;
-  flex-direction: column;
   background: white;
-  border-radius: 16px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 20px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+  overflow: hidden;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
   padding: 1.5rem;
   margin: 0 auto;
   width: 30vw;
-  max-width: 350px;
   height: 90vh;
   flex: 1 1 300px;
   text-align: center;
-  transition: transform 0.3s ease;
-  box-sizing: border-box;
-  overflow: hidden;
+  transition: transform 0.15s ease;
 }
 .promo--item:hover {
-  transform: translateY(-5px);
+  transform: translateY(-10px);
 }
 .promo__icon {
-  display: flexbox;
+  display: flex;
   justify-content: center;
+  align-items: center;
   font-size: 2rem;
   margin-bottom: 1rem;
 }
@@ -54,15 +55,14 @@ body {
 .promo__image-container {
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
   align-items: center;
   width: 90%;
   height: 50%;
   aspect-ratio: 4/3;
   overflow: hidden;
-  border-radius: 16px;
+  border-radius: 20px;
   margin-bottom: 1rem;
-  background-color: #f9f9f9;
+  background-color: #ebffff;
 }
 .promo__image {
   width: 100%;
@@ -73,33 +73,47 @@ body {
 }
 .promo__title {
   font-size: 1.5rem;
-  color: #4f46e4;
-  margin-bottom: 0.5rem 0;
+  color: #0d00ff;
+  margin-bottom: 0.5rem;
 }
 .promo__description {
   font-size: 1rem;
-  color: #333;
+  color: #000000;
   margin-bottom: 1rem;
 }
 .promo__link {
-  display: flexbox;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   padding: 0.6rem 1.5rem;
-  background-color: #4f46e4;
+  background-color: #0d00ff;
   color: white;
   text-decoration: none;
-  border-radius: 16px;
+  border-radius: 20px;
   transition: background-color 0.3s ease;
 }
 .promo__link:hover {
-  background-color: #2a1fd8;
+  background-color: #0a00cc;
 }
-@media (max-width: 600px) {
+@media (max-width: 700px) {
   .promo .promo {
-    flex-direction: column;
-    align-items: center;
+    display: flex;
+    flex-direction: row;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 1rem;
+    padding: 1rem;
+    -webkit-overflow-scrolling: touch;
+    scroll-padding-left: 1rem;
   }
   .promo .promo--item {
-    max-width: 90%;
-    flex: 1 1 auto;
+    min-width: 300px;
+    min-height: 600px;
+    scroll-snap-align: start;
+    flex: 0 0 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
 }
