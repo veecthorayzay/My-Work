@@ -1,14 +1,19 @@
 //variables to be used
-@primary-color: #0d00ff;
+@primary-color: #ffffff;
 @text-color: #000000;
-@bg-light: #ebffff;
+@bg: #202020;
+@highlight-color: #d3d3d375;
+@text: #008be7;
+@text-light: #EAF0CE;
 @border-radius: 20px;
+@card_bg: rgba(56, 56, 56, 0.2);
 
 //mixins to be used
 .card_style() {
-    background: white;
+    background-color: card_bg;
+    backdrop-filter: blur(20px);
     border-radius: @border-radius;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.3);
     box-sizing: border-box;
     overflow: hidden;
     align-items: center;
@@ -35,11 +40,28 @@
 //body style
 body {
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-    background-color: @bg-light;
+    background-color: @bg;
+    background-image: linear-gradient(20deg, @bg, @highlight-color);
     margin: 0;
     padding: 0;
 }
 
+.toggle-button {
+    margin: 2rem;
+    padding: 0.5rem 1rem;
+    background-color: @primary-color;
+    color: white;
+    border: none;
+    border-radius: @border-radius;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    z-index: 20;
+    transition: background-color 0.4s ease;
+
+    &:hover {
+        background-color: darken(@bg, 10%);
+    }
+}
 
 //element styles
 .promo {
@@ -64,10 +86,17 @@ body {
         height: 90vh;
         flex: 1 1 300px;
         text-align: center;
-        transition: transform 0.15s ease;
+        transition: opacity 1s ease, transform 1s ease;
+        opacity: 1;
 
         &:hover {
             transform: translateY(-10px);
+            background-color: darken(@card_bg, 3%);
+        }
+
+        &.hidden-fade {
+            opacity: 0;
+            transform: scale(0.95);
         }
     }
 
@@ -75,6 +104,21 @@ body {
         .flex_center();
         font-size: 2rem;
         margin-bottom: 1rem;
+        width: 3rem;
+        height: 4rem;
+        object-fit: cover;
+        justify-content: center;
+        border-radius: @border-radius;
+    }
+
+    &__icon-img {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+        margin-bottom: 1rem;
+        border-radius: 16px;
     }
 
     &__content {
@@ -92,12 +136,13 @@ body {
         flex-direction: column;
         align-items: center;
         width: 90%;
-        height: 50%;
+        height: 60%;
         aspect-ratio: 4/3;
         overflow: hidden;
         border-radius: @border-radius;
         margin-bottom: 1rem;
-        background-color: @bg-light;
+        background-color: @bg;
+        box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.3);
     }
 
     &__image {
@@ -109,12 +154,12 @@ body {
     }
 
     &__title {
-        font-size: 1.5rem;
-        color: @primary-color;
+        font-size: clamp(1.5rem, 2vw, 1.8rem);
+        color: @text;
         margin-bottom: 0.5rem;
     }
 
-    &__description {
+    &__details {
         font-size: 1rem;
         color: @text-color;
         margin-bottom: 1rem;
@@ -123,8 +168,8 @@ body {
     &__link {
         .flex_center();
         padding: 0.6rem 1.5rem;
-        background-color: @primary-color;
-        color: white;
+        background-color: @text;
+        color: @text-light;
         text-decoration: none;
         border-radius: @border-radius;
         transition: background-color 0.3s ease;
