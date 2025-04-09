@@ -1,12 +1,15 @@
 body {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   background-color: #202020;
-  background-image: linear-gradient(20deg, #202020, #d3d3d375);
+  background-image: linear-gradient(45deg, #EAF0CE, #6999b9);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
   margin: 0;
   padding: 0;
 }
 .toggle-button {
-  margin: 2rem;
+  margin: 1rem, 2rem;
   background-color: #ffffff;
   color: white;
   border: none;
@@ -24,8 +27,8 @@ body {
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-evenly;
-  gap: 2rem;
-  padding: 2rem;
+  gap: 1.5rem;
+  padding: 1rem;
   box-sizing: border-box;
   align-items: flex-start;
   width: 100%;
@@ -41,7 +44,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-items: center;
-  padding: 1.5rem;
+  padding: 1.2rem;
   margin: 0 auto;
   width: 30vw;
   height: 90vh;
@@ -52,7 +55,7 @@ body {
 }
 .promo--item:hover {
   transform: translateY(-10px);
-  background-color: rgba(48, 48, 48, 0.2);
+  background-color: rgba(51, 51, 51, 0.329);
 }
 .promo--item.hidden-fade {
   opacity: 0;
@@ -63,20 +66,10 @@ body {
   align-items: center;
   font-size: 2rem;
   margin-bottom: 1rem;
-  width: 3rem;
-  height: 4rem;
+  width: 2.5rem;
+  height: 2.5rem;
   object-fit: cover;
   justify-content: center;
-  border-radius: 20px;
-}
-.promo__icon-img {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 100%;
-  margin-bottom: 1rem;
-  border-radius: 16px;
 }
 .promo__content {
   width: 90%;
@@ -109,11 +102,12 @@ body {
 }
 .promo__title {
   font-size: clamp(1.5rem, 2vw, 1.8rem);
-  color: #008be7;
+  color: #6999b9;
   margin-bottom: 0.5rem;
 }
 .promo__details {
   font-size: 1rem;
+  font-weight: 450;
   color: #000000;
   margin-bottom: 1rem;
 }
@@ -122,7 +116,7 @@ body {
   justify-content: center;
   align-items: center;
   padding: 0.6rem 1.5rem;
-  background-color: #008be7;
+  background-color: #6999b9;
   color: #EAF0CE;
   text-decoration: none;
   border-radius: 20px;
@@ -131,25 +125,23 @@ body {
 .promo__link:hover {
   background-color: #e6e6e6;
 }
-@media (max-width: 700px) {
+@media (max-width: 800px) {
   .promo .promo {
     display: flex;
-    flex-direction: row;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    gap: 1rem;
-    padding: 1rem;
-    -webkit-overflow-scrolling: touch;
-    scroll-padding-left: 1rem;
+    flex-direction: column;
+    align-items: center;
   }
   .promo .promo--item {
-    min-width: 300px;
-    min-height: 600px;
-    scroll-snap-align: start;
-    flex: 0 0 80%;
+    display: none;
+    width: 100%;
+    max-width: 90%;
+  }
+  .promo .promo--item.active {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
+  }
+  .promo .promo--item:not(.active) {
+    display: none;
   }
 }

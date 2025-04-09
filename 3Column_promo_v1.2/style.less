@@ -1,12 +1,13 @@
+// This is a LESS stylesheet for a promotional card layout.
 //variables to be used
 @primary-color: #ffffff;
 @text-color: #000000;
 @bg: #202020;
 @highlight-color: #d3d3d375;
-@text: #008be7;
+@text: #6999b9;
 @text-light: #EAF0CE;
 @border-radius: 20px;
-@card_bg: rgba(56, 56, 56, 0.2);
+@card_bg: rgba(56, 56, 56, 0.329);
 
 //mixins to be used
 .card_style() {
@@ -41,14 +42,16 @@
 body {
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     background-color: @bg;
-    background-image: linear-gradient(20deg, @bg, @highlight-color);
+    background-image: linear-gradient(45deg, @text-light, @text);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
     margin: 0;
     padding: 0;
 }
 
 .toggle-button {
-    margin: 2rem;
-    padding: 0.5rem 1rem;
+    margin: 1rem, 2rem;
     background-color: @primary-color;
     color: white;
     border: none;
@@ -69,8 +72,8 @@ body {
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-evenly;
-    gap: 2rem;
-    padding: 2rem;
+    gap: 1.5rem;
+    padding: 1rem;
     box-sizing: border-box;
     align-items: flex-start;
     width: 100%;
@@ -80,7 +83,7 @@ body {
         display: flex;
         flex-direction: column;
         justify-items: center;
-        padding: 1.5rem;
+        padding: 1.2rem;
         margin: 0 auto;
         width: 30vw;
         height: 90vh;
@@ -91,7 +94,7 @@ body {
 
         &:hover {
             transform: translateY(-10px);
-            background-color: darken(@card_bg, 3%);
+            background-color: darken(@card_bg, 2%);
         }
 
         &.hidden-fade {
@@ -104,21 +107,10 @@ body {
         .flex_center();
         font-size: 2rem;
         margin-bottom: 1rem;
-        width: 3rem;
-        height: 4rem;
+        width: 2.5rem;
+        height: 2.5rem;
         object-fit: cover;
         justify-content: center;
-        border-radius: @border-radius;
-    }
-
-    &__icon-img {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 100%;
-        height: 100%;
-        margin-bottom: 1rem;
-        border-radius: 16px;
     }
 
     &__content {
@@ -161,6 +153,7 @@ body {
 
     &__details {
         font-size: 1rem;
+        font-weight: 450;
         color: @text-color;
         margin-bottom: 1rem;
     }
@@ -179,21 +172,29 @@ body {
         }
     }
 
-    //Respons'v
-    @media (max-width: 700px) {
+    @media (max-width: 800px) {
         .promo {
-            .hori_scroll();
-        }
-
-        .promo--item {
-            min-width: 300px;
-            min-height: 600px;
-            scroll-snap-align: start;
-            flex: 0 0 80%;
             display: flex;
             flex-direction: column;
-            justify-content: center;
             align-items: center;
+            
+            &--item {
+                display:none;
+                width: 100%;
+                max-width: 90%;
+            }
+
+            &--item.active {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            &--item:not(.active) {
+                display: none;
+            }
         }
+
+
     }
 }
