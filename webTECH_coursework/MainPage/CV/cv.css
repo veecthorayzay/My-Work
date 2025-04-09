@@ -1,0 +1,155 @@
+html, body, h1, h2, h3, h4, h5, h6, p {  
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+p, li {
+    font-weight: 200; 
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight:500;
+}
+
+#title h1 {
+    background-color: #333333;
+    background-image: linear-gradient(to right, #00fff2b2 30%, rgba(137, 4, 245, 0.438) 100%);
+    background-size: 100%;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -moz-text-fill-color: transparent;
+    text-align: center;
+    font-size: 40px;
+}
+
+.cvbody {
+    max-height: 100%; 
+    max-width: 100%; 
+    background-image: linear-gradient(to top, #f5f5f5 50%, #eaeaea 100%); 
+}
+
+.cvcontent { 
+    max-width: 100%; 
+    max-height: 100%;
+}
+
+.cvpadding {
+    padding: 5px;
+}
+
+.skills_lang {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width:50%;
+    max-height:100%;
+    justify-content: space-between;
+    margin: 10px;
+    border-radius: 20px;
+}
+
+.skillsarea, .P_Languages {
+    background-color: rgba(153, 153, 153, 0.2); 
+    border-radius: 20px;
+    min-width: 100%;
+    height: 50%;
+    overflow: hidden; 
+}
+
+.profilearea, .Bottomblock {
+    padding: 10px;
+    margin: 10px;
+    border-radius: 20px;
+    background-color: rgba(153, 153, 153, 0.2); 
+}
+
+.cvtoprow, .cvbottomrow {
+    justify-content: space-between;
+    max-height: 100%;
+    width: 95%;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 20px;
+    background-image: linear-gradient(to top, rgb(186, 186, 186) 30%, #dbdbdb 100%);
+}
+
+.cvbottomrow {
+    display: flexbox;
+}
+
+.cvtoprow {
+    display: flex;
+}
+
+
+.profilearea {
+    width: 50%;
+    position: relative;
+}
+
+.profilearea p {
+    font-size: larger;
+    font-weight: 300;
+}
+
+.profilepic img {
+    width: 80%;
+    border-radius: 20px;
+}
+
+.profiletext h1 {
+    position: center;
+}
+
+.profileinfo {
+    display: flex;
+}
+
+.skillsarea, .P_Languages {
+    h2 {
+        text-align: center;
+    }
+}
+
+.Bottomblock {
+    align-self: flex-end;
+    text-align: left;
+}
+
+.modu_links {
+    display: flex;
+    flex-direction: row;
+    gap: 50px;
+}
+
+.modu_links a {
+    color: #A0522D; 
+    text-decoration: none; 
+    font-weight: bold; 
+}
+
+#nav ul{
+    list-style-type: none;
+    padding: 0;
+    margin: 10px;
+    overflow: hidden;
+    background-color: #333333;
+    background-image: linear-gradient(to right, #00fff2b2 0%, rgba(137, 4, 245, 0.438) 100%);
+    border-radius: 10px;
+}
+
+#nav li{
+    margin: 0; 
+    float: left;
+    a {
+        display: block; 
+        color: white;
+        text-align: center;
+        padding: 16px 18px;
+        text-decoration: none;
+    }
+    a:hover {
+        background-color: #00000070;
+        border-radius: 10px;
+    }
+}

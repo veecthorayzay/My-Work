@@ -1,0 +1,304 @@
+<html>
+<script src="dailyweatherdata.js"></script>
+<script src="weatherforecast.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.5.1/chart.min.js"
+  integrity="sha512-Wt1bJGtlnMtGP0dqNFH1xlkLBNpEodaiQ8ZN5JLA5wpc1sUlk/O5uuOMNgvzddzkpvZ9GLyYNa8w2s7rqiTk5Q=="
+  crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<style>
+  canvas {
+    max-width: 1000px !important;
+    max-height: 400px !important;
+
+  }
+
+  html,
+  body,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+
+  #DailyWeatherInformation {
+    margin: 60px;
+    margin-bottom: 10px;
+  }
+
+  #graphs {
+    margin: 40px;
+    margin-top: 10px;
+  }
+
+  canvas {
+    max-width: 1000px !important;
+    max-height: 400px !important;
+  }
+
+  h1,
+  h2 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .Box {
+    background-color: rgba(128, 128, 128, 0.1);
+    display: flexbox;
+    font-size: larger;
+    border-radius: 9px;
+    margin: 5px;
+    padding: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  }
+
+  #graphs {
+    display: flexbox;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    padding: 20px;
+    background-color: rgba(128, 128, 128, 0.1);
+    /*grey background */
+  }
+
+  .Wcontent {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    font-family: 'Segoe UI';
+    font-weight: bolder;
+    background-image: linear-gradient(to top, rgb(186, 186, 186) 30%, #dbdbdb 100%);
+    border-radius: 5px;
+  }
+
+  p {
+    justify-content: space-evenly;
+  }
+
+  .divs {
+    width: 33%;
+  }
+
+  #selectbox {
+    background-image: linear-gradient(to right, #00fff25b 0%, rgba(137, 4, 245, 0.11) 100%);
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 5px;
+
+  }
+
+  #selectbox:hover {
+    background-image: linear-gradient(to right, #00fff291 0%, rgba(137, 4, 245, 0.459) 100%);
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 5px;
+  }
+
+  #nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 10px;
+    overflow: hidden;
+    background-color: #333333;
+    background-image: linear-gradient(to right, #00fff2b2 0%, rgba(137, 4, 245, 0.438) 100%);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  }
+
+  #nav li {
+    margin: 0;
+    float: left;
+
+    a {
+      display: block;
+      color: white;
+      text-align: center;
+      padding: 16px 18px;
+      text-decoration: none;
+    }
+
+    a:hover {
+      background-color: #00000070;
+      border-radius: 10px;
+    }
+  }
+</style>
+
+
+<div id="nav">
+  <ul>
+    <li><a href="../index.html">Main Page</a></li>
+    <li><a href="../CV/cv.html"> CV </a></li>
+    <li><a href="../Login/session.php">Login</a></li>
+    <li><a href="../List_display/list.php" >Publication List</a></li>
+  </ul>
+</div>
+
+<body>
+
+  <h1>Weather Forecast Stoke</h1>
+
+  <div id="DailyWeatherInformation">
+
+    <div id="Stoke" class="Box">
+
+      <h2>Daily Weather for Stoke</h2>
+      <div class="Wcontent">
+        <div id="div1" class="divs">
+          <p>Longitude: <label id="lon"></label></p>
+          <P>Latitude: <label id="lat"></label></P>
+          <P>Temperature: <label id="temp"></label></P>
+        </div>
+        <div id="div2" class="divs">
+          <P>Feels Like: <label id="feels_like"></label></P>
+          <P>Min Temperature: <label id="temp_min"></label></P>
+          <P>Max Temperature: <label id="temp_max"></label></P>
+        </div>
+        <div id="div3" class="divs">
+          <P>Pressure: <label id="pressure"></label></P>
+          <P>Humidity: <label id="humidity"></label></P>
+          <P>Wind Speed: <label id="speed"></label></P>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="Box" id="graphs">
+    <h2>"Graphs for Stoke Weather"</h2>
+    <!--First canvas-->
+    <div class="chart">
+      <canvas id="TempChart"></canvas><br>
+    </div>
+    <!--Second canvas-->
+    <div class="chart">
+      <canvas id="HumidityChart"></canvas><br>
+    </div>
+
+    <!--Select box-->
+    <div class="select">
+      <select name="Chart Type" id="selectbox">
+        <option value="line"> Line Graph </option>
+        <option value="bar"> Bar Chart </option>
+      </select>
+    </div>
+
+  </div>
+
+</body>
+
+<script>
+  //TODO: Task 1:
+  var daily = JSON.parse(dailydata_stoke);
+  document.getElementById('lon').innerHTML = daily.coord.lon;
+  document.getElementById('lat').innerHTML = daily.coord.lat;
+  document.getElementById('temp').innerHTML = daily.main.temp;
+  document.getElementById('feels_like').innerHTML = daily.main.feels_like;
+  document.getElementById('temp_min').innerHTML = daily.main.temp_min;
+  document.getElementById('temp_max').innerHTML = daily.main.temp_max;
+  document.getElementById('pressure').innerHTML = daily.main.pressure;
+  document.getElementById('humidity').innerHTML = daily.main.humidity;
+  document.getElementById('speed').innerHTML = daily.wind.speed;
+
+
+</script>
+
+<script>
+  //TODO: Task 2, 3 and 4
+  var forecast = JSON.parse(forecast_stoke);
+  this.dateList = forecast.list.map(list => {
+    return list.dt_txt;
+  });
+
+  //tempList
+  this.temperatureList = forecast.list.map(list => {
+    return list.main.temp;
+  });
+
+  //humidityList
+  this.humidityList = forecast.list.map(list => {
+    return list.main.humidity;
+  })
+
+  let selectedType = "line";
+
+  // Temp Chart
+  var tempCtx = document.getElementById('TempChart').getContext('2d');
+  var tempChart = new Chart(tempCtx, {
+    type: selectedType,
+    options: {
+      responsive: true,
+    },
+    data: {
+      labels: this.dateList,
+      datasets: [
+        {
+          label: "Temperature",
+          backgroundColor: function (ctx) {
+            // Create gradient
+            var gradient = ctx.chart.ctx.createLinearGradient(0, 0, 0, ctx.chart.height);
+            gradient.addColorStop(0.2, 'rgba(0, 0, 0, 0.5)');
+            gradient.addColorStop(1, 'rgba(15, 155, 15, 0.2)');
+
+            return gradient;
+          },
+          borderColor: "black",
+          borderWidth: 2,
+          fill: true,
+          data: this.temperatureList
+        }
+      ]
+    }
+  });
+
+  // Humidity Chart
+  var humidityCtx = document.getElementById("HumidityChart").getContext('2d');
+  var humidityChart = new Chart(humidityCtx, {
+    type: selectedType,
+    options: {
+      responsive: true,
+    },
+    data: {
+      labels: this.dateList,
+      datasets: [
+        {
+          label: "Humidity",
+          backgroundColor: function (ctx) {
+            // Create gradient
+            var gradient = ctx.chart.ctx.createLinearGradient(0, 0, 0, ctx.chart.height);
+            gradient.addColorStop(0.2, 'rgba(0, 0, 0, 0.5)');
+            gradient.addColorStop(1, 'rgba(15, 155, 15, 0.2)');
+
+            return gradient;
+          },
+          borderColor: "black",
+          borderWidth: 2,
+          fill: true,
+          data: this.humidityList
+        }
+      ]
+    }
+  });
+
+  // Function to update chart type
+  function updateChartType(chart, chartType) {
+    chart.config.type = chartType;
+    chart.update();
+  }
+
+  // Event listener to update chart type based on dropdown
+  document.getElementById('selectbox').addEventListener('change', function () {
+    var selectedType = this.value;
+    updateChartType(tempChart, selectedType);
+    updateChartType(humidityChart, selectedType);
+  });
+
+
+</script>
+
+</html>
